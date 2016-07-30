@@ -14,20 +14,7 @@
         </activity>
         <activity android:name="org.artoolkit.ar.base.camera.CameraPreferencesActivity"></activity>
       <!--Parse -->
-      <activity android:name="com.unity3d.player.UnityPlayerActivity">
-        <!--<intent-filter>
-          <action android:name="android.intent.action.MAIN" />
-          <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter> -->
-      </activity>
-      <receiver android:name="com.parse.ParsePushBroadcastReceiver" android:permission="com.google.android.c2dm.permission.SEND">
-        <intent-filter>
-          <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-          <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
-          <category android:name="com.parse.parseunitypushsample" />
-        </intent-filter>
-      </receiver>
-      <service android:name="com.parse.ParsePushService" />
+
     </application>
 	<uses-permission android:name="android.permission.CAMERA" />
 	<uses-permission android:name="android.permission.INTERNET" />
@@ -36,11 +23,5 @@
 	<uses-feature android:name="android.hardware.camera" android:required="false" />
 	<uses-feature android:name="android.hardware.camera.autofocus" android:required="false" />
   <!--Parse fetures + permissions-->
-  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-  <uses-permission android:name="android.permission.WAKE_LOCK" />
-  <uses-permission android:name="android.permission.VIBRATE" />
-  <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-  <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-  <permission android:protectionLevel="signature" android:name="com.parse.parseunitypushsample.permission.C2D_MESSAGE" />
-  <uses-permission android:name="com.parse.parseunitypushsample.permission.C2D_MESSAGE" />
+
 </manifest>

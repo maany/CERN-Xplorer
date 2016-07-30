@@ -98,8 +98,9 @@ GameObject:
   - 23: {fileID: 47290410}
   - 114: {fileID: 47290409}
   - 131: {fileID: 47290414}
+  - 114: {fileID: 47290415}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: Map
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -121,14 +122,31 @@ MonoBehaviour:
   autoLocateCenter: 0
   centerLocation:
     address: 
-    latitude: 46.22976
-    longitude: 6.049979
-  zoom: 13
+    latitude: 46.23408
+    longitude: 6.05314
+  zoom: 16
   mapType: 0
-  size: 512
+  size: 1024
   doubleResolution: 1
-  markers: []
-  paths: []
+  markers:
+  - size: 0
+    color: 0
+    label: 
+    locations:
+    - address: 
+      latitude: 46.23263
+      longitude: 6.05225
+  paths:
+  - weight: 0
+    color: 0
+    fill: 0
+    fillColor: 0
+    locations: []
+  - weight: 0
+    color: 0
+    fill: 0
+    fillColor: 0
+    locations: []
 --- !u!23 &47290410
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -181,7 +199,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 47290408}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.107498646, y: -0.46158338, z: 0.12885857}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -206,6 +224,21 @@ GUITexture:
   m_RightBorder: 0
   m_TopBorder: 0
   m_BottomBorder: 0
+--- !u!114 &47290415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 47290408}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba9018c50e7b9544e916714bc43299e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLocationEnabled: 0
+  longitude: 0
+  latitude: 0
+  distance: 0
 --- !u!1 &380963597
 GameObject:
   m_ObjectHideFlags: 0
@@ -329,8 +362,58 @@ MonoBehaviour:
   ySpeed: 175
   minDistance: 0
   maxDistance: 20
-  yMinLimit: 50
-  yMaxLimit: 50
+  yMinLimit: 45
+  yMaxLimit: 80
+--- !u!1 &421485533 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 130644, guid: 16e5aca9861e75b43aad74b12103c777, type: 2}
+  m_PrefabInternal: {fileID: 1157903168}
+--- !u!1001 &621790494
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 405820, guid: d37146122a56f9c42a07318d14aae9e5, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 405820, guid: d37146122a56f9c42a07318d14aae9e5, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 405820, guid: d37146122a56f9c42a07318d14aae9e5, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 405820, guid: d37146122a56f9c42a07318d14aae9e5, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 405820, guid: d37146122a56f9c42a07318d14aae9e5, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 405820, guid: d37146122a56f9c42a07318d14aae9e5, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 405820, guid: d37146122a56f9c42a07318d14aae9e5, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 405820, guid: d37146122a56f9c42a07318d14aae9e5, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 192284, guid: d37146122a56f9c42a07318d14aae9e5, type: 2}
+      propertyPath: m_Name
+      value: Cube
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: d37146122a56f9c42a07318d14aae9e5, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &714590154
 GameObject:
   m_ObjectHideFlags: 0
@@ -393,6 +476,49 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+--- !u!1 &844383312
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 844383313}
+  - 114: {fileID: 844383314}
+  m_Layer: 0
+  m_Name: ParticleSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &844383313
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 844383312}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.85212, y: -0.56587154, z: -0.5553116}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+--- !u!114 &844383314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 844383312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 217143cbf8d35274e87a2b8bbb842d57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 421485533}
+  locationManager: {fileID: 1424036630}
+  dummyParticle: {fileID: 192284, guid: d37146122a56f9c42a07318d14aae9e5, type: 2}
 --- !u!1001 &1157903168
 Prefab:
   m_ObjectHideFlags: 0
@@ -402,15 +528,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 430644, guid: 16e5aca9861e75b43aad74b12103c777, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -2.5089543
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 430644, guid: 16e5aca9861e75b43aad74b12103c777, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.46158338
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 430644, guid: 16e5aca9861e75b43aad74b12103c777, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -1.1882011
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 430644, guid: 16e5aca9861e75b43aad74b12103c777, type: 2}
       propertyPath: m_LocalRotation.x
@@ -469,8 +595,10 @@ GameObject:
   - 4: {fileID: 1424036632}
   - 114: {fileID: 1424036631}
   - 131: {fileID: 1424036633}
+  - 114: {fileID: 1424036634}
+  - 114: {fileID: 1424036635}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: LocationManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -532,3 +660,35 @@ GUITexture:
   m_RightBorder: 0
   m_TopBorder: 0
   m_BottomBorder: 0
+--- !u!114 &1424036634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1424036630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6784ae0fac677c14a9bc44cb9aa46b27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  map: {fileID: 47290408}
+  lat: 46.23408
+  lon: 6.05314
+  latText: {fileID: 0}
+  lonText: {fileID: 0}
+  isLocationEnabled: 0
+--- !u!114 &1424036635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1424036630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba9018c50e7b9544e916714bc43299e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLocationEnabled: 0
+  longitude: 0
+  latitude: 0
+  distance: 0

@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
+
 [ExecuteInEditMode]
 public class TestLocationService : MonoBehaviour
 {
@@ -68,6 +70,8 @@ public class TestLocationService : MonoBehaviour
         {
             //GeoCoordinate oldCoordinate = GeoCoordinate(latitude, longtitude);
             float delDist = Haversine(ref latitude, ref longitude) * 1000f;
+            latitude = Input.location.lastData.latitude;
+            longitude = Input.location.lastData.longitude;
             if (delDist > 0f)
             {
                 distance += delDist;
@@ -80,7 +84,9 @@ public class TestLocationService : MonoBehaviour
     {
         if (isLocationEnabled)
         {
-            GUI.Label(new Rect(Screen.width / 5, Screen.height / 10, Screen.width - 80, Screen.height - 40), "lat : " + latitude + " long : " + longitude + " dist : " + distance);
+            GUIStyle mystyle = new GUIStyle();
+            mystyle.fontSize = 50;
+            GUI.Label(new Rect(Screen.width / 5, Screen.height / 10, Screen.width - 80, Screen.height - 40), "lat : " + latitude + " long : " + longitude + " dist : " + distance + " TIme : " +  DateTime.Now.ToShortTimeString(),mystyle);
            // GUI.Label(new Rect(200, 15, 75, 25), "latitude : " + longitude);
         }else
         {

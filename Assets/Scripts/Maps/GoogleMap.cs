@@ -25,7 +25,10 @@ public class GoogleMap : MonoBehaviour
     {
         if (loadOnStart) Refresh();
     }
+    public void OnGui()
+    {
 
+    }
     public void Refresh()
     {
         if (autoLocateCenter && (markers.Length == 0 && paths.Length == 0))
@@ -86,11 +89,11 @@ public class GoogleMap : MonoBehaviour
 
         var req = new WWW(url + "?" + qs);
         yield return req;
-        GetComponent<Renderer>().material.mainTexture = req.texture;
-        GUITexture gui = GetComponent<GUITexture>();
-        gui.texture= req.texture;
+        gameObject.GetComponent<Renderer>().material.mainTexture = req.texture;
+        //GUITexture gui = GetComponent<GUITexture>();
+        //gui.texture= req.texture;
         //Rect camRect = mainCamera.
-        gui.pixelInset = new Rect(500, 500, Screen.width/5, Screen.height/5);
+        //gui.pixelInset = new Rect(500, 500, Screen.width/5, Screen.height/5);
         
     }
 
