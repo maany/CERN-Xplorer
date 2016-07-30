@@ -98,7 +98,6 @@ GameObject:
   - 23: {fileID: 47290410}
   - 114: {fileID: 47290409}
   - 131: {fileID: 47290414}
-  - 114: {fileID: 47290415}
   m_Layer: 0
   m_Name: Map
   m_TagString: Untagged
@@ -224,21 +223,6 @@ GUITexture:
   m_RightBorder: 0
   m_TopBorder: 0
   m_BottomBorder: 0
---- !u!114 &47290415
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 47290408}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba9018c50e7b9544e916714bc43299e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isLocationEnabled: 0
-  longitude: 0
-  latitude: 0
-  distance: 0
 --- !u!1 &380963597
 GameObject:
   m_ObjectHideFlags: 0
@@ -321,10 +305,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 380963597}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: 0.44003507, y: 0, z: 0, w: 0.8979806}
+  m_LocalPosition: {x: 0, y: 5.26, z: -1.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 52.2122, y: -360, z: -360}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -350,7 +334,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 380963597}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e16760226a93144b8b4287c5c812757, type: 3}
   m_Name: 
@@ -362,7 +346,7 @@ MonoBehaviour:
   ySpeed: 175
   minDistance: 0
   maxDistance: 20
-  yMinLimit: 45
+  yMinLimit: 30
   yMaxLimit: 80
 --- !u!1 &421485533 stripped
 GameObject:
@@ -511,7 +495,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 844383312}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 217143cbf8d35274e87a2b8bbb842d57, type: 3}
   m_Name: 
@@ -595,8 +579,9 @@ GameObject:
   - 4: {fileID: 1424036632}
   - 114: {fileID: 1424036631}
   - 131: {fileID: 1424036633}
-  - 114: {fileID: 1424036634}
   - 114: {fileID: 1424036635}
+  - 114: {fileID: 1424036634}
+  - 114: {fileID: 1424036636}
   m_Layer: 0
   m_Name: LocationManager
   m_TagString: Untagged
@@ -610,7 +595,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1424036630}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 40e8374e9381fc54b99df6985aed4d37, type: 3}
   m_Name: 
@@ -666,14 +651,14 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1424036630}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6784ae0fac677c14a9bc44cb9aa46b27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   map: {fileID: 47290408}
   lat: 46.23408
-  lon: 6.05314
+  lon: 0
   latText: {fileID: 0}
   lonText: {fileID: 0}
   isLocationEnabled: 0
@@ -683,7 +668,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1424036630}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ba9018c50e7b9544e916714bc43299e2, type: 3}
   m_Name: 
@@ -692,3 +677,19 @@ MonoBehaviour:
   longitude: 0
   latitude: 0
   distance: 0
+--- !u!114 &1424036636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1424036630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59eba10cbb1371845b7240dc8f9685c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  map: {fileID: 47290408}
+  lat: 46.23408
+  lon: 6.05314
+  latText: {fileID: 0}
+  lonText: {fileID: 0}

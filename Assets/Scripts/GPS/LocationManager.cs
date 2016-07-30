@@ -15,7 +15,7 @@ public class LocationManager : MonoBehaviour
     void Start()
     {
         Input.location.Start(); // enable the mobile device GPS
-        map = GameObject.FindGameObjectWithTag("Map");
+        //map = GameObject.FindGameObjectWithTag("Map");
         if (Input.location.isEnabledByUser)
         { // if mobile device GPS is enabled
             float lat = Input.location.lastData.latitude; //get GPS Data
