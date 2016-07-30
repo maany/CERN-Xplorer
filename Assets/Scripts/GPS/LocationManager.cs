@@ -15,9 +15,11 @@ public class LocationManager : MonoBehaviour
     void Start()
     {
         Input.location.Start(); // enable the mobile device GPS
+
         //map = GameObject.FindGameObjectWithTag("Map");
         if (Input.location.isEnabledByUser)
         { // if mobile device GPS is enabled
+            Input.location.Start();
             float lat = Input.location.lastData.latitude; //get GPS Data
             float lon = Input.location.lastData.longitude;
         }
@@ -47,13 +49,14 @@ public class LocationManager : MonoBehaviour
         //      
         if (lastlat != lat || lastlon != lon)
         {
-            map.GetComponent<GoogleMap>().centerLocation.latitude = lat;
-            map.GetComponent<GoogleMap>().centerLocation.longitude = lon;
-            map.GetComponent<GoogleMap>().Refresh();
+            //map.GetComponent<GoogleMap>().centerLocation.latitude = lat;
+            //map.GetComponent<GoogleMap>().centerLocation.longitude = lon;
+            //map.GetComponent<GoogleMap>().Refresh();
         }
         lastlat = lat;
         lastlon = lon;
         //      
+
 
     }
 }

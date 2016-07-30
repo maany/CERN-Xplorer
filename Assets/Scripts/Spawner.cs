@@ -32,6 +32,7 @@ public class Spawner : MonoBehaviour {
 	void Update () {
         if (Input.location.isEnabledByUser)
         {
+            Input.location.Start();
             playerlon = Input.location.lastData.longitude;
             playerlat = Input.location.lastData.latitude;
             //Debug.Log(locationManager.GetComponent<LocationManager>().getLon().ToString());

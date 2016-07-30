@@ -10,6 +10,9 @@ public class TestLocationService : MonoBehaviour
     public float latitude;
     public float distance;
     const float EarthRadius = 6371;
+    public GameObject map;
+    private GoogleMap googleMap;
+    int count = 0;
     IEnumerator Start()
     {
         // First, check if user has location service enabled
@@ -48,9 +51,10 @@ public class TestLocationService : MonoBehaviour
             print("Location: " + Input.location.lastData.latitude + " " + Input.location.lastData.longitude + " " + Input.location.lastData.altitude + " " + Input.location.lastData.horizontalAccuracy + " " + Input.location.lastData.timestamp);
             isLocationEnabled = true;
         }
-
+        googleMap = map.GetComponent<GoogleMap>();
+        
         // Stop service if there is no need to query location updates continuously
-        Input.location.Stop();
+       // Input.location.Stop();
     }
     float Haversine(ref float lastLatitude, ref float lastLongitude)
     {
@@ -77,6 +81,14 @@ public class TestLocationService : MonoBehaviour
                 distance += delDist;
             }
             Debug.Log("Location is " + latitude + ", " + longitude + ", " + distance);
+            count++;
+            if (count >= 120)
+            {
+                googleMap.centerLocation.latitude = latitude;
+                googleMap.centerLocation.longitude = longitude;
+                googleMap.Refresh();
+                count = 0;
+            }
         }
         Debug.Log("Updating");
     }

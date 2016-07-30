@@ -20,17 +20,29 @@ public class GoogleMap : MonoBehaviour
     public bool doubleResolution = false;
     public GoogleMapMarker[] markers;
     public GoogleMapPath[] paths;
+    private bool refreshing;
 
     void Start()
     {
         if (loadOnStart) Refresh();
     }
-    public void OnGui()
+    public void OnGUI()
     {
-
+        GUIStyle style = new GUIStyle();
+        if(GUI.Button(new Rect(100, 150, Screen.width / 5, Screen.height), "Click!!"))
+        {
+            Debug.Log("Clicked Button");
+            Refresh();
+        }
+        style.fontSize = 50;
+        if (refreshing)
+        {
+            GUI.Label(new Rect(0, 50, Screen.width / 5, Screen.height), "REFRESHING ", style);
+        }
     }
     public void Refresh()
     {
+        refreshing = true;
         if (autoLocateCenter && (markers.Length == 0 && paths.Length == 0))
         {
             Debug.LogError("Auto Center will only work if paths or markers are used.");
@@ -40,6 +52,7 @@ public class GoogleMap : MonoBehaviour
 
     IEnumerator _Refresh()
     {
+       // OnGui();
         var url = "http://maps.googleapis.com/maps/api/staticmap";
         var qs = "";
         if (!autoLocateCenter)
@@ -94,7 +107,7 @@ public class GoogleMap : MonoBehaviour
         //gui.texture= req.texture;
         //Rect camRect = mainCamera.
         //gui.pixelInset = new Rect(500, 500, Screen.width/5, Screen.height/5);
-        
+        refreshing = false;
     }
 
 }
