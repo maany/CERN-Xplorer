@@ -219,6 +219,7 @@ GameObject:
   - 124: {fileID: 380963599}
   - 81: {fileID: 380963598}
   - 114: {fileID: 380963603}
+  - 114: {fileID: 380963604}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -300,7 +301,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 380963597}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4269c2330afd35944968b78c703bcb67, type: 3}
   m_Name: 
@@ -310,6 +311,26 @@ MonoBehaviour:
   height: 2
   heightDamping: 2
   rotationDamping: 3
+--- !u!114 &380963604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 380963597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e16760226a93144b8b4287c5c812757, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1237878357}
+  distance: 0.5
+  cameraSpeed: 5
+  xSpeed: 175
+  ySpeed: 175
+  minDistance: 0
+  maxDistance: 20
+  yMinLimit: 50
+  yMaxLimit: 50
 --- !u!1 &714590154
 GameObject:
   m_ObjectHideFlags: 0
@@ -366,7 +387,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 714590154}
   m_LocalRotation: {x: 0.40821794, y: -0.23456973, z: 0.109381676, w: 0.87542605}
-  m_LocalPosition: {x: -4.27, y: 2.904, z: -0.355}
+  m_LocalPosition: {x: -1.69, y: 0.96, z: -2.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
   m_Children: []
@@ -418,6 +439,18 @@ Prefab:
     - target: {fileID: 430644, guid: 16e5aca9861e75b43aad74b12103c777, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 8.609099
+      objectReference: {fileID: 0}
+    - target: {fileID: 430644, guid: 16e5aca9861e75b43aad74b12103c777, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.12485006
+      objectReference: {fileID: 0}
+    - target: {fileID: 430644, guid: 16e5aca9861e75b43aad74b12103c777, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0.12485006
+      objectReference: {fileID: 0}
+    - target: {fileID: 430644, guid: 16e5aca9861e75b43aad74b12103c777, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 0.12485006
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 16e5aca9861e75b43aad74b12103c777, type: 2}
