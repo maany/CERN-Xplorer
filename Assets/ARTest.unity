@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 123703268}
   - 114: {fileID: 123703267}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: SceneRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,7 +141,7 @@ GameObject:
   - 33: {fileID: 137928322}
   - 135: {fileID: 137928321}
   - 23: {fileID: 137928320}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -484,7 +484,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 824264881}
   - 114: {fileID: 824264882}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: Tracker1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -528,7 +528,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1851656004}
   - 108: {fileID: 1851656003}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Directional Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -594,7 +594,7 @@ GameObject:
   - 124: {fileID: 2139490698}
   - 81: {fileID: 2139490697}
   - 114: {fileID: 2139490702}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -646,7 +646,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294966527
+    m_Bits: 4294965759
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
