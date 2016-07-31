@@ -21,8 +21,10 @@ public class TestLocationService : MonoBehaviour
     private bool hitTest;
     private List<string> flow;
     int flowNumber=0;
+    string message;
     IEnumerator Start()
     {
+        message = "Now, start moving and keep collecting particles on your way! :)";
         // First, check if user has location service enabled
         if (!Input.location.isEnabledByUser)
             yield break;
@@ -130,13 +132,18 @@ public class TestLocationService : MonoBehaviour
     {
         //if (flow.Count > 0)
         //{
-           // GUI.Box(new Rect(0, 0, Screen.width, 60), flow[flowNumber]);
+        // GUI.Box(new Rect(0, 0, Screen.width, 60), flow[flowNumber]);
         //}
+        GUIStyle mystyle = new GUIStyle();
+        mystyle.fontSize = 50;
+        GUIStyle mystyle2 = new GUIStyle();
+        mystyle.fontSize = 60;
+        
+        GUI.Box(new Rect(0, 0, Screen.width, 60), message, mystyle2);
         if (isLocationEnabled)
         {
-            GUIStyle mystyle = new GUIStyle();
-            mystyle.fontSize = 50;
-            GUI.Label(new Rect(0, 20, Screen.width , 60), "lat : " + latitude + " long : " + longitude + " dist : " + distance + " TIme : " + DateTime.Now.ToShortTimeString() + "Hit : " + hitTest, mystyle );
+           
+            GUI.Label(new Rect(0, 50, Screen.width , 60), "lat : " + latitude + " long : " + longitude + " dist : " + distance + " TIme : " + DateTime.Now.ToShortTimeString() + "Hit : " + hitTest, mystyle );
             // GUI.Label(new Rect(200, 15, 75, 25), "latitude : " + longitude);
         }
         else

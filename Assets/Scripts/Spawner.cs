@@ -114,12 +114,18 @@ public class Spawner : MonoBehaviour {
         {
             double[] xz = new Helper().convertXZ(playerlon, playerlat, particle.longitude, particle.latitude, default(Vector3), default(Vector3));
             //GameObject temp = Instantiate(Resources.Load<GameObject>("ParticleDUmmy"), new Vector3((float)xz[0]+4548.703f, 0.07f, (float)xz[1]+45035.17f), new Quaternion(0, 0, 0, 0)) as GameObject;
-            GameObject temp;
-            if(particle.name.Equals("gluon"))
-            temp = Instantiate(Resources.Load<GameObject>("gluon1"), new Vector3((float)xz[0] , 0.07f, (float)xz[1] ), new Quaternion(0, 0, 0, 0)) as GameObject;
+            
+            GameObject temp = Instantiate(Resources.Load<GameObject>("ParticleDUmmy"), new Vector3((float)xz[0], 0.07f, (float)xz[1]), new Quaternion(0, 0, 0, 0)) as GameObject;
+            //if (particle.name.Equals("refParticle")) 
+            //    temp = Instantiate(Resources.Load<GameObject>("gluon1"), new Vector3((float)xz[0], 0.07f, (float)xz[1]), new Quaternion(0, 0, 0, 0)) as GameObject;
+            //else
+
+
+
             //BoxCollider colldier = temp.AddComponent<BoxCollider>();
             temp.name = particle.name;
-            temp.AddComponent<ParticleGameObjectScript>();
+            ParticleGameObjectScript script = temp.AddComponent<ParticleGameObjectScript>();
+            script.particle = particle;
             count++;
            // Material mat = temp.GetComponent<Renderer>().material;
            // mat.color = Color.red;
@@ -179,37 +185,37 @@ public class Spawner : MonoBehaviour {
 			"and 1 Down Quark) of atomic nuclei.\n");
 		list.Add(downQuark2);
 
-		Particle gluon = new Particle("gluon", , , "0e", "0", "They are elementary particles that glue quarks together, " +
+		Particle gluon1 = new Particle("gluon", 46.23040, 6.05163, "0e", "0", "They are elementary particles that glue quarks together, " +
 									  "forming protons and neutrons. The gluons are considered to be bi-colored, carrying " +
 									  "a unit of color and a unit of anti-color\n");
-		//list.Add(gluon);
+		list.Add(gluon1);
 
-		Particle protons = new Particle("proton", , , "+1e", "1.67 x 10^−27 kg", "A proton is a subatomic particle " +
-										"with a positive electric charge of +1e elementary charge.\nThe spontaneous decay " +
-										"of free protons has never been observed, and protons are therefore considered " +
-									    "stable particles according to the Standard Model.\n");
-		//list.Add(protons);
+		//Particle protons = new Particle("proton", , , "+1e", "1.67 x 10^−27 kg", "A proton is a subatomic particle " +
+		//								"with a positive electric charge of +1e elementary charge.\nThe spontaneous decay " +
+		//								"of free protons has never been observed, and protons are therefore considered " +
+		//							    "stable particles according to the Standard Model.\n");
+		////list.Add(protons);
 
-		Particle electrons = new Particle("electron", , , "-1e", "9.1 x 10^-31 kg", "An electron is a subatomic particle " +
-										  "with a negative elementary electric charge which was discovered by J.J Thompson " +
-										  "in 1897. The electron has a mass that is approximately 1/1836 that of the proton.\n");
-		//list.Add(electrons);
+		//Particle electrons = new Particle("electron", , , "-1e", "9.1 x 10^-31 kg", "An electron is a subatomic particle " +
+		//								  "with a negative elementary electric charge which was discovered by J.J Thompson " +
+		//								  "in 1897. The electron has a mass that is approximately 1/1836 that of the proton.\n");
+		////list.Add(electrons);
 
-		Particle zbosons = new Particle("zBoson", , , "0e", "91.1876 ± 0.0021 GeV/c^2", "Discovered in 1983 by physicists at the " +
-										"Super Proton Synchrotron at CERN, the Z boson is a neutral elementary particle. The " +
-										"Z boson carries the weak force and it’s mass limits the range of the weak force to about " +
-										"10-18 metres.\n");
-		//list.Add(zbosons);
+		//Particle zbosons = new Particle("zBoson", , , "0e", "91.1876 ± 0.0021 GeV/c^2", "Discovered in 1983 by physicists at the " +
+		//								"Super Proton Synchrotron at CERN, the Z boson is a neutral elementary particle. The " +
+		//								"Z boson carries the weak force and it’s mass limits the range of the weak force to about " +
+		//								"10-18 metres.\n");
+		////list.Add(zbosons);
 
-		Particle photons = new Particle("photon", , , "0e", "0", "A photon is an elementary particle which has zero rest mass and " +
-									    "exhibit wave–particle duality i.e. exhibiting properties of both waves and particles.\n");
-		//list.Add(photons);
+		//Particle photons = new Particle("photon", , , "0e", "0", "A photon is an elementary particle which has zero rest mass and " +
+		//							    "exhibit wave–particle duality i.e. exhibiting properties of both waves and particles.\n");
+		////list.Add(photons);
 
-		Particle higgsBoson = new Particle("higgsBoson", , , "0e", "125.09 ± 0.21 (stat.) ± 0.11 (syst.) GeV/c^2", "The Higgs boson " +
-										   "is an elementary particle in the Standard Model of particle physics. It is a boson with " +
-										   "no spin, electric charge, or colour charge. It is also very unstable, decaying into other " +
-										   "particles almost immediately. \n");
-		//list.Add(higgsBoson);
+		//Particle higgsBoson = new Particle("higgsBoson", , , "0e", "125.09 ± 0.21 (stat.) ± 0.11 (syst.) GeV/c^2", "The Higgs boson " +
+		//								   "is an elementary particle in the Standard Model of particle physics. It is a boson with " +
+		//								   "no spin, electric charge, or colour charge. It is also very unstable, decaying into other " +
+		//								   "particles almost immediately. \n");
+		////list.Add(higgsBoson);
 
         return list;
     }
