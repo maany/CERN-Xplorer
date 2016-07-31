@@ -57,6 +57,8 @@ public class TestLocationService : MonoBehaviour
         }
         googleMap = map.GetComponent<GoogleMap>();
         spawner = particleSpawnObject.GetComponent<Spawner>();
+
+
         // Stop service if there is no need to query location updates continuously
         // Input.location.Stop();
     }
@@ -92,18 +94,15 @@ public class TestLocationService : MonoBehaviour
                 googleMap.centerLocation.longitude = longitude;
                 googleMap.Refresh();
                 count = 0;
+                if (spawner == null)
+                {
+                    spawner = particleSpawnObject.GetComponent<Spawner>();
+                }
+                spawner.SpawnBegin();
             }
         }
         Debug.Log("Updating");
-        if (spawner == null)
-        {
-            spawner = particleSpawnObject.GetComponent<Spawner>();
-        }
-        if (!particleSpawned)
-        {
-            spawner.SpawnBegin();
-            particleSpawned= true;
-        }
+        
     }
     void OnGUI()
     {

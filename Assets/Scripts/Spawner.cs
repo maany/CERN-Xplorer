@@ -12,10 +12,15 @@ public class Spawner : MonoBehaviour {
     float playerlat;
     public GameObject locationManager;
     private bool spawn;
+    private bool spawned;
     private float lastlon;
     private float lastlat;
     public GameObject dummyParticle;
-
+    private float xdiff=0;
+    private float ydiff=0;
+    int count = 0;
+    bool isinit=false;
+    bool updatingParticlePosition;
    public Spawner()
     {
 
@@ -25,15 +30,15 @@ public class Spawner : MonoBehaviour {
     {
         helper = new Helper();
         particles = initDemoParticles();
-        lastlon = Input.location.lastData.longitude;
-        lastlat = Input.location.lastData.latitude;
+        //lastlon = Input.location.lastData.longitude;
+        //lastlat = Input.location.lastData.latitude;
         particleGameObjects = new List<GameObject>();
         spawn = true;
-        double ratio = Helper.DistanceBetweenPlaces(6.05314, 46.23408, 6.05225, 46.23263) / Helper.DistanceXYZBetweenPlaces(new Vector3(0, 0, 0), new Vector3(0.653f, 0, 1.386f));
+        double ratio = new Helper().DistanceBetweenPlaces(6.05314, 46.23408, 6.05225, 46.23263) / new Helper().DistanceXYZBetweenPlaces(new Vector3(0, 0, 0), new Vector3(0.653f, 0, 1.386f));
         Debug.Log("***************" + ratio);
-        particles = initDemoParticles();
-        particleGameObjects = new List<GameObject>();
-        SpawnBegin();
+        isinit = true;
+        //SpawnBegin();
+        //GameObject temp = Instantiate(Resources.Load<GameObject>("ParticleDUmmy"), new Vector3(0,0,0), new Quaternion(0, 0, 0, 0)) as GameObject;
 
     }
 
@@ -48,44 +53,76 @@ public class Spawner : MonoBehaviour {
     }
     public void SpawnBegin()
     {
-        playerlon = Input.location.lastData.longitude;
-        playerlat = Input.location.lastData.latitude;
-        //Debug.Log(locationManager.GetComponent<LocationManager>().getLon().ToString());
-        if (spawn == true)
+        
+        if (isinit)
         {
-            particleSpawn();
-            spawn = false;
-        }
-        if (particles.Count != 0)
-        {
-            if (playerlon != lastlon || playerlat != lastlat)
+            particles = initDemoParticles();
+            particleGameObjects = new List<GameObject>();
+            playerlon = Input.location.lastData.longitude;
+            playerlat = Input.location.lastData.latitude;
+            //Debug.Log(locationManager.GetComponent<LocationManager>().getLon().ToString());
+            if (spawn == true)
             {
-
-                updateParticlePosition();
+                particleSpawn();
+                spawn = false;
             }
+            if (particles.Count != 0)
+            {
+                //if (playerlon != lastlon || playerlat != lastlat)
+                //{
 
+                    updatingParticlePosition = true;
+                    updateParticlePosition();
+                    //updatingParticlePosition = false;
+                //}
+
+            }
+            lastlat = playerlon;
+            lastlon = playerlat;
         }
-        lastlat = playerlon;
-        lastlon = playerlat;
     }
-
+    void OnGUI()
+    {
+        if (GUI.Button(new Rect(100, 150, Screen.width / 5, Screen.height), "Click!!" + "isinit spawner:" + isinit + " update?" + updatingParticlePosition))
+        {
+            Debug.Log("Clicked Button");
+            SpawnBegin();
+        }
+        if (spawned)
+        {
+            GUIStyle style = new GUIStyle();
+            style.fontSize = 50;
+            GUI.Label(new Rect(350, 290, Screen.width / 5, Screen.height), "Spawned " + xdiff + " : " + ydiff);
+            
+        }
+        //Particle particle = new Particle("downQuark2", 46.22974, 6.04962);
+        //double[] xz = new Helper().convertXZ(playerlon, playerlat, particle.longitude, particle.latitude, default(Vector3), default(Vector3));
+        GUIStyle style1 = new GUIStyle();
+        style1.fontSize = 50;
+        GUI.Label(new Rect(350, 250, Screen.width / 5, Screen.height), "Particles instantiated : " + count);
+    }
     void particleSpawn()
     {
         Debug.Log("Spawning");
-        playerlat = (float)46.23408;
-        playerlon = (float)6.05314;
+        //playerlat = (float)46.23408;
+        //playerlon = (float)6.05314;
         Particle referenceParticle = new Particle("refParticle", playerlat, playerlon);
         particles.Add(referenceParticle);
         foreach(Particle particle in particles)
         {
-            double[] xz = Helper.convertXZ(playerlon, playerlat, particle.longitude, particle.latitude, default(Vector3), default(Vector3));
-            GameObject temp = Instantiate(dummyParticle, new Vector3((float)xz[0]+4548.703f, 0.07f, (float)xz[1]+45035.17f), new Quaternion(0, 0, 0, 0)) as GameObject;
+            double[] xz = new Helper().convertXZ(playerlon, playerlat, particle.longitude, particle.latitude, default(Vector3), default(Vector3));
+            //GameObject temp = Instantiate(Resources.Load<GameObject>("ParticleDUmmy"), new Vector3((float)xz[0]+4548.703f, 0.07f, (float)xz[1]+45035.17f), new Quaternion(0, 0, 0, 0)) as GameObject;
+            GameObject temp = Instantiate(Resources.Load<GameObject>("ParticleDUmmy"), new Vector3((float)xz[0] , 0.07f, (float)xz[1] ), new Quaternion(0, 0, 0, 0)) as GameObject;
+            count++;
+           // Material mat = temp.GetComponent<Renderer>().material;
+           // mat.color = Color.red;
             //GameObject temp = Instantiate(dummyParticle, player.transform.position, new Quaternion(0, 0, 0, 0)) as GameObject;
 
             Debug.Log(temp.transform.position.ToString());
             particleGameObjects.Add(temp);
         }
         spawn = false;
+        spawned = true;
         //balanceParticles();
     }
     void updateParticlePosition()
@@ -93,12 +130,13 @@ public class Spawner : MonoBehaviour {
         int i = 0;
         foreach(Particle particle in particles)
         {
-            double[] tempxz = Helper.convertXZ(playerlon, playerlat, particle.longitude, particle.latitude,default(Vector3),default(Vector3));
-            particleGameObjects[i].transform.position = new Vector3((float)tempxz[0]+4548.703f, 0.00f, (float)tempxz[1]+45035.17f);
-            Debug.Log(particleGameObjects[i].transform.position.ToString());
-            i++;
+            //double[] tempxz = new Helper().convertXZ(playerlon, playerlat, particle.longitude, particle.latitude,default(Vector3),default(Vector3));
+            //particleGameObjects[i].transform.position = new Vector3((float)tempxz[0]+4548.703f, 0.00f, (float)tempxz[1]+45035.17f);
+           // particleGameObjects[i].transform.position = new Vector3((float)tempxz[0] , 0.00f, (float)tempxz[1] );
+           // Debug.Log(particleGameObjects[i].transform.position.ToString());
+           // i++;
         }
-        //balanceParticles();
+        balanceParticles();
     }
     void balanceParticles()
     {
@@ -106,7 +144,7 @@ public class Spawner : MonoBehaviour {
         Vector3 diff = player.transform.position - playerObject.transform.position;
         foreach (GameObject go in particleGameObjects)
         {
-            go.transform.position = go.transform.position + new Vector3(4548.703f,0,45035.17f);            
+            go.transform.position = go.transform.position -diff;            
         }
     }
     List<Particle> initDemoParticles()

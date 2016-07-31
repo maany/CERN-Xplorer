@@ -20,7 +20,7 @@ namespace Assets.Scripts.Maps
 
             return new Vector3(x, z, y);
         }
-        public static double DistanceBetweenPlaces(double lon1, double lat1, double lon2, double lat2)
+        public double DistanceBetweenPlaces(double lon1, double lat1, double lon2, double lat2)
         {
             float R = 6371000; // m
             double sLat1 = Math.Sin(Mathf.Deg2Rad*lat1);
@@ -37,19 +37,19 @@ namespace Assets.Scripts.Maps
 
             return dist;
         }
-      public static double DistanceXYZBetweenPlaces(Vector3 place1, Vector3 place2)
+      public double DistanceXYZBetweenPlaces(Vector3 place1, Vector3 place2)
         {
             return Vector3.Distance(place1, place2);
         }
 
-        public static double BearingBetweenPlaces(double lon1, double lat1, double lon2, double lat2)
+        public double BearingBetweenPlaces(double lon1, double lat1, double lon2, double lat2)
         {
             double y = Math.Sin(Mathf.Deg2Rad*lon2 - Mathf.Deg2Rad*lon1) * Math.Cos(Mathf.Deg2Rad*lat2);
             double x = Math.Cos(Mathf.Deg2Rad*lat1) * Math.Sin(Mathf.Deg2Rad*lat2) - Math.Sin(Mathf.Deg2Rad*lat1) * Math.Cos(Mathf.Deg2Rad*lat2) * Math.Cos(Mathf.Deg2Rad*lon2 - Mathf.Deg2Rad*lon1);
             double bearing = Math.Atan2(y, x);
             return bearing;
         }
-        public static double[] convertXZ(double lon1, double lat1, double lon2, double lat2,Vector3 position1, Vector3 position2)
+        public double[] convertXZ(double lon1, double lat1, double lon2, double lat2,Vector3 position1, Vector3 position2)
         {
             // double ratio = DistanceBetweenPlaces(lon1,lat1,lon2,lat2)/DistanceXYZBetweenPlaces(position1,position2);
             double ratio = 0.00874684;//114.326917;

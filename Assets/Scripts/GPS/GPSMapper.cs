@@ -16,12 +16,12 @@ public class GPSMapper : MonoBehaviour
     void Start()
     {
         
-        Input.location.Start(); // enable the mobile device GPS
+       // Input.location.Start(); // enable the mobile device GPS
        // map = GameObject.FindGameObjectWithTag("MainCamera");
         if (Input.location.isEnabledByUser)
         { // if mobile device GPS is enabled
-            float lat = Input.location.lastData.latitude; //get GPS Data
-            float lon = Input.location.lastData.longitude;
+         //   float lat = Input.location.lastData.latitude; //get GPS Data
+         //   float lon = Input.location.lastData.longitude;
         }
 
     }
@@ -49,16 +49,16 @@ public class GPSMapper : MonoBehaviour
         //}
 
 
-        float lat = Input.location.lastData.latitude;
-        float lon = Input.location.lastData.longitude;
-        if (lastlat != lat || lastlon != lon)
-        {
-            map.GetComponent<GoogleMap>().centerLocation.latitude = lat;
-            map.GetComponent<GoogleMap>().centerLocation.longitude = lon;
-            map.GetComponent<GoogleMap>().Refresh();
-        }
-        lastlat = lat;
-        lastlon = lon;
+        //float lat = Input.location.lastData.latitude;
+        //float lon = Input.location.lastData.longitude;
+        //if (lastlat != lat || lastlon != lon)
+        //{
+        //    map.GetComponent<GoogleMap>().centerLocation.latitude = lat;
+        //    map.GetComponent<GoogleMap>().centerLocation.longitude = lon;
+        //    map.GetComponent<GoogleMap>().Refresh();
+        //}
+        //lastlat = lat;
+        //lastlon = lon;
     }
 
 }

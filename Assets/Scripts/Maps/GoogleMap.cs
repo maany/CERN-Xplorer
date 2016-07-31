@@ -21,19 +21,23 @@ public class GoogleMap : MonoBehaviour
     public GoogleMapMarker[] markers;
     public GoogleMapPath[] paths;
     private bool refreshing;
+    private Spawner spawner;
+    public GameObject particleSpawn;
 
     void Start()
     {
+        spawner = particleSpawn.GetComponent<Spawner>();
         if (loadOnStart) Refresh();
+
     }
     public void OnGUI()
     {
         GUIStyle style = new GUIStyle();
-        if(GUI.Button(new Rect(100, 150, Screen.width / 5, Screen.height), "Click!!"))
-        {
-            Debug.Log("Clicked Button");
-            Refresh();
-        }
+        //if(GUI.Button(new Rect(100, 150, Screen.width / 5, Screen.height), "Click!!"))
+        //{
+        //    Debug.Log("Clicked Button");
+        //    Refresh();
+        //}
         style.fontSize = 50;
         if (refreshing)
         {
@@ -48,6 +52,7 @@ public class GoogleMap : MonoBehaviour
             Debug.LogError("Auto Center will only work if paths or markers are used.");
         }
         StartCoroutine(_Refresh());
+        //spawner.SpawnBegin();
     }
 
     IEnumerator _Refresh()
