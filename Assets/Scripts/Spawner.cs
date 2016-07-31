@@ -108,13 +108,15 @@ public class Spawner : MonoBehaviour {
         Debug.Log("Spawning");
         //playerlat = (float)46.23408;
         //playerlon = (float)6.05314;
-        Particle referenceParticle = new Particle("refParticle", playerlat, playerlon);
+        Particle referenceParticle = new Particle("refParticle", playerlat, playerlon,"","","");
         particles.Add(referenceParticle);
         foreach(Particle particle in particles)
         {
             double[] xz = new Helper().convertXZ(playerlon, playerlat, particle.longitude, particle.latitude, default(Vector3), default(Vector3));
             //GameObject temp = Instantiate(Resources.Load<GameObject>("ParticleDUmmy"), new Vector3((float)xz[0]+4548.703f, 0.07f, (float)xz[1]+45035.17f), new Quaternion(0, 0, 0, 0)) as GameObject;
-            GameObject temp = Instantiate(Resources.Load<GameObject>("ParticleDUmmy"), new Vector3((float)xz[0] , 0.07f, (float)xz[1] ), new Quaternion(0, 0, 0, 0)) as GameObject;
+            GameObject temp;
+            if(particle.name.Equals("gluon"))
+            temp = Instantiate(Resources.Load<GameObject>("gluon1"), new Vector3((float)xz[0] , 0.07f, (float)xz[1] ), new Quaternion(0, 0, 0, 0)) as GameObject;
             //BoxCollider colldier = temp.AddComponent<BoxCollider>();
             temp.name = particle.name;
             temp.AddComponent<ParticleGameObjectScript>();

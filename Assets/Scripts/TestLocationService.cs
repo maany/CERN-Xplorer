@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using System.Collections.Generic;
 
 [ExecuteInEditMode]
 public class TestLocationService : MonoBehaviour
@@ -18,6 +19,8 @@ public class TestLocationService : MonoBehaviour
     private Spawner spawner;
     int count = 0;
     private bool hitTest;
+    private List<string> flow;
+    int flowNumber=0;
     IEnumerator Start()
     {
         // First, check if user has location service enabled
@@ -58,7 +61,8 @@ public class TestLocationService : MonoBehaviour
         }
         googleMap = map.GetComponent<GoogleMap>();
         spawner = particleSpawnObject.GetComponent<Spawner>();
-
+        flow = new List<string>();
+        initFlowMessages();
 
         // Stop service if there is no need to query location updates continuously
         // Input.location.Stop();
@@ -124,11 +128,15 @@ public class TestLocationService : MonoBehaviour
     }
     void OnGUI()
     {
+        //if (flow.Count > 0)
+        //{
+           // GUI.Box(new Rect(0, 0, Screen.width, 60), flow[flowNumber]);
+        //}
         if (isLocationEnabled)
         {
             GUIStyle mystyle = new GUIStyle();
             mystyle.fontSize = 50;
-            GUI.Label(new Rect(Screen.width / 5, Screen.height / 10, Screen.width - 80, Screen.height - 40), "lat : " + latitude + " long : " + longitude + " dist : " + distance + " TIme : " + DateTime.Now.ToShortTimeString() + "Hit : " + hitTest, mystyle );
+            GUI.Label(new Rect(0, 20, Screen.width , 60), "lat : " + latitude + " long : " + longitude + " dist : " + distance + " TIme : " + DateTime.Now.ToShortTimeString() + "Hit : " + hitTest, mystyle );
             // GUI.Label(new Rect(200, 15, 75, 25), "latitude : " + longitude);
         }
         else
@@ -138,6 +146,11 @@ public class TestLocationService : MonoBehaviour
         }
 
 
+    }
+    void initFlowMessages()
+    {
+        flow.Add("Hi, welcome to CERN. Are you a physicist? No? Don’t worry! This app will is your perfect tour guide. You will learn basics of particle physics and understand what happens with these particles here at the ‘Mecca of Particle Physics’.");
+        flow.Add("Now, start moving and keep collecting particles on your way! :)");
     }
 
 }
