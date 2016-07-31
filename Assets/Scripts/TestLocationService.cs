@@ -6,13 +6,17 @@ using System;
 public class TestLocationService : MonoBehaviour
 {
     public bool isLocationEnabled;
+    private bool particleSpawned;
     public float longitude;
     public float latitude;
     public float distance;
     const float EarthRadius = 6371;
     public GameObject map;
     private GoogleMap googleMap;
+    public GameObject particleSpawnObject;
+    private Spawner spawner;
     int count = 0;
+
     IEnumerator Start()
     {
         // First, check if user has location service enabled
@@ -52,9 +56,9 @@ public class TestLocationService : MonoBehaviour
             isLocationEnabled = true;
         }
         googleMap = map.GetComponent<GoogleMap>();
-        
+        spawner = particleSpawnObject.GetComponent<Spawner>();
         // Stop service if there is no need to query location updates continuously
-       // Input.location.Stop();
+        // Input.location.Stop();
     }
     float Haversine(ref float lastLatitude, ref float lastLongitude)
     {
@@ -91,6 +95,15 @@ public class TestLocationService : MonoBehaviour
             }
         }
         Debug.Log("Updating");
+        if (spawner == null)
+        {
+            spawner = particleSpawnObject.GetComponent<Spawner>();
+        }
+        if (!particleSpawned)
+        {
+            spawner.SpawnBegin();
+            particleSpawned= true;
+        }
     }
     void OnGUI()
     {

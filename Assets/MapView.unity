@@ -334,7 +334,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 380963597}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e16760226a93144b8b4287c5c812757, type: 3}
   m_Name: 
@@ -677,6 +677,8 @@ MonoBehaviour:
   longitude: 0
   latitude: 0
   distance: 0
+  map: {fileID: 47290408}
+  particleSpawnObject: {fileID: 844383312}
 --- !u!114 &1424036636
 MonoBehaviour:
   m_ObjectHideFlags: 0
