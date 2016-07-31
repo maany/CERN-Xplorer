@@ -21,6 +21,7 @@ public class Spawner : MonoBehaviour {
     int count = 0;
     bool isinit=false;
     bool updatingParticlePosition;
+    Vector3 diff;
    public Spawner()
     {
 
@@ -83,23 +84,23 @@ public class Spawner : MonoBehaviour {
     }
     void OnGUI()
     {
-        if (GUI.Button(new Rect(100, 150, Screen.width / 5, Screen.height), "Click!!" + "isinit spawner:" + isinit + " update?" + updatingParticlePosition))
-        {
-            Debug.Log("Clicked Button");
-            SpawnBegin();
-        }
-        if (spawned)
-        {
-            GUIStyle style = new GUIStyle();
-            style.fontSize = 50;
-            GUI.Label(new Rect(350, 290, Screen.width / 5, Screen.height), "Spawned " + xdiff + " : " + ydiff);
+        //if (GUI.Button(new Rect(100, 150, Screen.width / 5, Screen.height), "Click!!" + "isinit spawner:" + isinit + " update?" + updatingParticlePosition))
+        //{
+        //    Debug.Log("Clicked Button");
+        //    //SpawnBegin();
+        //}
+        //if (spawned)
+        //{
+        //    GUIStyle style = new GUIStyle();
+        //    style.fontSize = 50;
+        //    GUI.Label(new Rect(350, 290, Screen.width / 5, Screen.height), "Spawned " + xdiff + " : " + ydiff);
             
-        }
-        //Particle particle = new Particle("downQuark2", 46.22974, 6.04962);
-        //double[] xz = new Helper().convertXZ(playerlon, playerlat, particle.longitude, particle.latitude, default(Vector3), default(Vector3));
-        GUIStyle style1 = new GUIStyle();
-        style1.fontSize = 50;
-        GUI.Label(new Rect(350, 250, Screen.width / 5, Screen.height), "Particles instantiated : " + count);
+        //}
+        ////Particle particle = new Particle("downQuark2", 46.22974, 6.04962);
+        ////double[] xz = new Helper().convertXZ(playerlon, playerlat, particle.longitude, particle.latitude, default(Vector3), default(Vector3));
+        //GUIStyle style1 = new GUIStyle();
+        //style1.fontSize = 50;
+        //GUI.Label(new Rect(350, 250, Screen.width / 5, Screen.height), "Particles instantiated : " + count);
     }
     void particleSpawn()
     {
@@ -141,7 +142,10 @@ public class Spawner : MonoBehaviour {
     void balanceParticles()
     {
         GameObject playerObject = particleGameObjects[particleGameObjects.Count - 1];
-        Vector3 diff = player.transform.position - playerObject.transform.position;
+        if (diff == default(Vector3))
+        {
+            diff = player.transform.position - playerObject.transform.position;
+        }
         foreach (GameObject go in particleGameObjects)
         {
             go.transform.position = go.transform.position -diff;            
