@@ -159,12 +159,21 @@ public class Spawner : MonoBehaviour {
     List<Particle> initDemoParticles()
     {
         List<Particle> list = new List<Particle>();
-        Particle upQuark = new Particle("upQuark", 46.23250, 6.05226);
-        list.Add(upQuark);
-        Particle downQuark1 = new Particle("downQuark", 46.23165, 6.05193);
-        list.Add(downQuark1);
-        Particle downQuark2 = new Particle("downQuark2", 46.22974, 6.04962);
-        list.Add(downQuark2);
+		Particle upQuark = new Particle("upQuark", 46.23250, 6.05226, "2/3e", "1.8-3.0 MeV/c^2", 
+			"It is the lightest of all quarks, a type of elementary particle, " +
+			"and a major constituent of matter. Up Quark's are stable but they can't exist " +
+			"freely in the universe.\n");
+		list.Add(upQuark);
+		Particle downQuark1 = new Particle("downQuark", 46.23165, 6.05193, "-1/3e", "4.8 MeV/c^2", 
+			"It is the second lightest of all quarks. Together with the Up Quark, " +
+			"it forms the neutrons (1 Up Quark and 2 Down Quarks) and protons (2 Up Quarks " +
+			"and 1 Down Quark) of atomic nuclei.\n");
+		list.Add(downQuark1);
+		Particle downQuark2 = new Particle("downQuark2", 46.22974, 6.04962, "-1/3e", "4.8 MeV/c^2", 
+			"It is the second lightest of all quarks. Together with the Up Quark, " +
+			"it forms the neutrons (1 Up Quark and 2 Down Quarks) and protons (2 Up Quarks " +
+			"and 1 Down Quark) of atomic nuclei.\n");
+		list.Add(downQuark2);
         return list;
     }
 }
