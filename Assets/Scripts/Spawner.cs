@@ -166,16 +166,51 @@ public class Spawner : MonoBehaviour {
 			"and a major constituent of matter. Up Quark's are stable but they can't exist " +
 			"freely in the universe.\n");
 		list.Add(upQuark);
+
 		Particle downQuark1 = new Particle("downQuark", 46.23165, 6.05193, "-1/3e", "4.8 MeV/c^2", 
 			"It is the second lightest of all quarks. Together with the Up Quark, " +
 			"it forms the neutrons (1 Up Quark and 2 Down Quarks) and protons (2 Up Quarks " +
 			"and 1 Down Quark) of atomic nuclei.\n");
 		list.Add(downQuark1);
+
 		Particle downQuark2 = new Particle("downQuark2", 46.22974, 6.04962, "-1/3e", "4.8 MeV/c^2", 
 			"It is the second lightest of all quarks. Together with the Up Quark, " +
 			"it forms the neutrons (1 Up Quark and 2 Down Quarks) and protons (2 Up Quarks " +
 			"and 1 Down Quark) of atomic nuclei.\n");
 		list.Add(downQuark2);
+
+		Particle gluon = new Particle("gluon", , , "0e", "0", "They are elementary particles that glue quarks together, " +
+									  "forming protons and neutrons. The gluons are considered to be bi-colored, carrying " +
+									  "a unit of color and a unit of anti-color\n");
+		//list.Add(gluon);
+
+		Particle protons = new Particle("proton", , , "+1e", "1.67 x 10^−27 kg", "A proton is a subatomic particle " +
+										"with a positive electric charge of +1e elementary charge.\nThe spontaneous decay " +
+										"of free protons has never been observed, and protons are therefore considered " +
+									    "stable particles according to the Standard Model.\n");
+		//list.Add(protons);
+
+		Particle electrons = new Particle("electron", , , "-1e", "9.1 x 10^-31 kg", "An electron is a subatomic particle " +
+										  "with a negative elementary electric charge which was discovered by J.J Thompson " +
+										  "in 1897. The electron has a mass that is approximately 1/1836 that of the proton.\n");
+		//list.Add(electrons);
+
+		Particle zbosons = new Particle("zBoson", , , "0e", "91.1876 ± 0.0021 GeV/c^2", "Discovered in 1983 by physicists at the " +
+										"Super Proton Synchrotron at CERN, the Z boson is a neutral elementary particle. The " +
+										"Z boson carries the weak force and it’s mass limits the range of the weak force to about " +
+										"10-18 metres.\n");
+		//list.Add(zbosons);
+
+		Particle photons = new Particle("photon", , , "0e", "0", "A photon is an elementary particle which has zero rest mass and " +
+									    "exhibit wave–particle duality i.e. exhibiting properties of both waves and particles.\n");
+		//list.Add(photons);
+
+		Particle higgsBoson = new Particle("higgsBoson", , , "0e", "125.09 ± 0.21 (stat.) ± 0.11 (syst.) GeV/c^2", "The Higgs boson " +
+										   "is an elementary particle in the Standard Model of particle physics. It is a boson with " +
+										   "no spin, electric charge, or colour charge. It is also very unstable, decaying into other " +
+										   "particles almost immediately. \n");
+		//list.Add(higgsBoson);
+
         return list;
     }
 }
