@@ -2,6 +2,7 @@
 using System.Collections;
 using Assets.Scripts.Maps;
 using System.Collections.Generic;
+using Assets.Scripts.DataModel;
 
 public class Spawner : MonoBehaviour {
     Helper helper;
@@ -114,6 +115,9 @@ public class Spawner : MonoBehaviour {
             double[] xz = new Helper().convertXZ(playerlon, playerlat, particle.longitude, particle.latitude, default(Vector3), default(Vector3));
             //GameObject temp = Instantiate(Resources.Load<GameObject>("ParticleDUmmy"), new Vector3((float)xz[0]+4548.703f, 0.07f, (float)xz[1]+45035.17f), new Quaternion(0, 0, 0, 0)) as GameObject;
             GameObject temp = Instantiate(Resources.Load<GameObject>("ParticleDUmmy"), new Vector3((float)xz[0] , 0.07f, (float)xz[1] ), new Quaternion(0, 0, 0, 0)) as GameObject;
+            //BoxCollider colldier = temp.AddComponent<BoxCollider>();
+            temp.name = particle.name;
+            temp.AddComponent<ParticleGameObjectScript>();
             count++;
            // Material mat = temp.GetComponent<Renderer>().material;
            // mat.color = Color.red;
@@ -126,6 +130,7 @@ public class Spawner : MonoBehaviour {
         spawned = true;
         //balanceParticles();
     }
+    
     void updateParticlePosition()
     {
         int i = 0;

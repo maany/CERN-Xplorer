@@ -7,6 +7,7 @@ public class TestLocationService : MonoBehaviour
 {
     public bool isLocationEnabled;
     private bool particleSpawned;
+    public Camera maincamera;
     public float longitude;
     public float latitude;
     public float distance;
@@ -16,7 +17,7 @@ public class TestLocationService : MonoBehaviour
     public GameObject particleSpawnObject;
     private Spawner spawner;
     int count = 0;
-
+    private bool hitTest;
     IEnumerator Start()
     {
         // First, check if user has location service enabled
@@ -101,7 +102,24 @@ public class TestLocationService : MonoBehaviour
                 spawner.SpawnBegin();
             }
         }
-        Debug.Log("Updating");
+        //Debug.Log("Updating");
+
+        //Detect Collisions
+
+        //if(Input.GetMouseButtonDown(0)){
+        //    Ray ray = maincamera.ScreenPointToRay(new Vector3(0.5F, 0.5F, 0));
+        //    RaycastHit hit;
+        //    if (Physics.Raycast(ray, out hit))
+        //    {
+        //        Debug.Log("*******I'm looking at " + hit.transform.name); hitTest = true;
+                
+        //    }
+        //    else
+        //    {
+        //        //print("I'm looking at nothing!"); 
+        //        hitTest = false;
+        //    }
+        //}
         
     }
     void OnGUI()
@@ -110,13 +128,16 @@ public class TestLocationService : MonoBehaviour
         {
             GUIStyle mystyle = new GUIStyle();
             mystyle.fontSize = 50;
-            GUI.Label(new Rect(Screen.width / 5, Screen.height / 10, Screen.width - 80, Screen.height - 40), "lat : " + latitude + " long : " + longitude + " dist : " + distance + " TIme : " +  DateTime.Now.ToShortTimeString(),mystyle);
-           // GUI.Label(new Rect(200, 15, 75, 25), "latitude : " + longitude);
-        }else
+            GUI.Label(new Rect(Screen.width / 5, Screen.height / 10, Screen.width - 80, Screen.height - 40), "lat : " + latitude + " long : " + longitude + " dist : " + distance + " TIme : " + DateTime.Now.ToShortTimeString() + "Hit : " + hitTest, mystyle );
+            // GUI.Label(new Rect(200, 15, 75, 25), "latitude : " + longitude);
+        }
+        else
         {
-            GUI.Label(new Rect(Screen.width/5, Screen.height/10, Screen.width - 80, Screen.height - 40), "Location is disabled. restart application!!");
+            GUI.Label(new Rect(Screen.width / 5, Screen.height / 10, Screen.width - 80, Screen.height - 40), "Location is disabled. restart application!!");
             Debug.Log("Location is disabled");
         }
-        
+
+
     }
+
 }

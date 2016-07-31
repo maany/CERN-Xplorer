@@ -1,6 +1,7 @@
 
 using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class OrbitCam: MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class OrbitCam: MonoBehaviour
         if (GetComponent<Rigidbody>())
             GetComponent<Rigidbody>().freezeRotation = true;
     }
+    
     void LateUpdate()
     {
         //Zooming with mouse
@@ -32,7 +34,7 @@ public class OrbitCam: MonoBehaviour
         //Detect mouse drag;
         if (Input.GetMouseButton(0))
         {
-
+            
             x += (Input.GetAxis("Mouse X") * xSpeed * 0.02);
             y -= Input.GetAxis("Mouse Y") * ySpeed * 0.02;
         }
