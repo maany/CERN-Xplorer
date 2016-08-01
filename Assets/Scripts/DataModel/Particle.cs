@@ -9,11 +9,12 @@ public class Particle  {
 	public string mass;
 	public string description;
 	public bool spawn;
+    public GameObject player;
 	public Particle()
 	{
 
 	}
-	public Particle(string name, double latitude, double longitude, string charge, string mass, string description)
+	public Particle(string name, double latitude, double longitude, string charge, string mass, string description,GameObject player)
 	{
 		this.name = name;
 		this.latitude = latitude;
@@ -21,6 +22,7 @@ public class Particle  {
 		this.charge = charge;
 		this.mass = mass;
 		this.description = description;
+        this.player = player;
 		spawn = true;
 	}
 

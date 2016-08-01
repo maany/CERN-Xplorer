@@ -146,6 +146,8 @@ MonoBehaviour:
     fill: 0
     fillColor: 0
     locations: []
+  refreshing: 0
+  spawner: {fileID: 0}
   particleSpawn: {fileID: 844383312}
 --- !u!23 &47290410
 MeshRenderer:
@@ -347,12 +349,26 @@ MonoBehaviour:
   ySpeed: 175
   minDistance: 0
   maxDistance: 20
+  x: 0
+  y: 0
   yMinLimit: 30
   yMaxLimit: 80
 --- !u!1 &421485533 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 130644, guid: 16e5aca9861e75b43aad74b12103c777, type: 2}
   m_PrefabInternal: {fileID: 1157903168}
+--- !u!114 &421485534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 421485533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bc394377dc5ffc49b000080f9821856, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energy: 0
 --- !u!1 &714590154
 GameObject:
   m_ObjectHideFlags: 0
@@ -456,8 +472,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 421485533}
+  particleGameObjects: []
+  playerlon: 0
+  playerlat: 0
   locationManager: {fileID: 1424036630}
+  spawn: 0
+  spawned: 0
+  lastlon: 0
+  lastlat: 0
   dummyParticle: {fileID: 192284, guid: d37146122a56f9c42a07318d14aae9e5, type: 2}
+  xdiff: 0
+  ydiff: 0
+  count: 0
+  isinit: 0
+  updatingParticlePosition: 0
+  diff: {x: 0, y: 0, z: 0}
 --- !u!1001 &1157903168
 Prefab:
   m_ObjectHideFlags: 0
@@ -568,6 +597,8 @@ MonoBehaviour:
   doubleResolution: 1
   markers: []
   paths: []
+  refreshing: 0
+  spawner: {fileID: 0}
   particleSpawn: {fileID: 0}
 --- !u!4 &1424036632
 Transform:
@@ -615,6 +646,8 @@ MonoBehaviour:
   map: {fileID: 47290408}
   lat: 46.23408
   lon: 0
+  lastlat: 0
+  lastlon: 0
   latText: {fileID: 0}
   lonText: {fileID: 0}
   isLocationEnabled: 0
@@ -630,12 +663,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isLocationEnabled: 0
+  particleSpawned: 0
   maincamera: {fileID: 0}
   longitude: 0
   latitude: 0
   distance: 0
   map: {fileID: 47290408}
+  googleMap: {fileID: 0}
   particleSpawnObject: {fileID: 844383312}
+  spawner: {fileID: 0}
+  count: 0
+  hitTest: 0
+  flow: []
+  flowNumber: 0
+  message: 4e6f772c207374617274206d6f76696e6720616e64206b65657020636f6c6c656374696e67207061727469636c6573206f6e20796f75722077617921203a29
 --- !u!114 &1424036636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -650,5 +691,7 @@ MonoBehaviour:
   map: {fileID: 47290408}
   lat: 46.23408
   lon: 6.05314
+  lastlat: 0
+  lastlon: 0
   latText: {fileID: 0}
   lonText: {fileID: 0}

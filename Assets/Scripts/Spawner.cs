@@ -108,14 +108,14 @@ public class Spawner : MonoBehaviour {
         Debug.Log("Spawning");
         //playerlat = (float)46.23408;
         //playerlon = (float)6.05314;
-        Particle referenceParticle = new Particle("refParticle", playerlat, playerlon,"","","");
+        Particle referenceParticle = new Particle("refParticle", playerlat, playerlon,"","","",player);
         particles.Add(referenceParticle);
         foreach(Particle particle in particles)
         {
             double[] xz = new Helper().convertXZ(playerlon, playerlat, particle.longitude, particle.latitude, default(Vector3), default(Vector3));
             //GameObject temp = Instantiate(Resources.Load<GameObject>("ParticleDUmmy"), new Vector3((float)xz[0]+4548.703f, 0.07f, (float)xz[1]+45035.17f), new Quaternion(0, 0, 0, 0)) as GameObject;
             
-            GameObject temp = Instantiate(Resources.Load<GameObject>("ParticleDUmmy"), new Vector3((float)xz[0], 0.07f, (float)xz[1]), new Quaternion(0, 0, 0, 0)) as GameObject;
+            GameObject temp = Instantiate(Resources.Load<GameObject>(particle.name), new Vector3((float)xz[0], 0.07f, (float)xz[1]), new Quaternion(0, 0, 0, 0)) as GameObject;
             //if (particle.name.Equals("refParticle")) 
             //    temp = Instantiate(Resources.Load<GameObject>("gluon1"), new Vector3((float)xz[0], 0.07f, (float)xz[1]), new Quaternion(0, 0, 0, 0)) as GameObject;
             //else
@@ -167,27 +167,27 @@ public class Spawner : MonoBehaviour {
     List<Particle> initDemoParticles()
     {
         List<Particle> list = new List<Particle>();
-		Particle upQuark = new Particle("upQuark", 46.23250, 6.05226, "2/3e", "1.8-3.0 MeV/c^2", 
+		Particle upQuark = new Particle("upQuark", 46.23168, 6.05404, "2/3e", "1.8-3.0 MeV/c^2", 
 			"It is the lightest of all quarks, a type of elementary particle, " +
 			"and a major constituent of matter. Up Quark's are stable but they can't exist " +
-			"freely in the universe.\n");
+			"freely in the universe.\n",player);
 		list.Add(upQuark);
 
-		Particle downQuark1 = new Particle("downQuark", 46.23165, 6.05193, "-1/3e", "4.8 MeV/c^2", 
+		Particle downQuark1 = new Particle("downQuark", 46.23108, 6.05394, "-1/3e", "4.8 MeV/c^2", 
 			"It is the second lightest of all quarks. Together with the Up Quark, " +
 			"it forms the neutrons (1 Up Quark and 2 Down Quarks) and protons (2 Up Quarks " +
-			"and 1 Down Quark) of atomic nuclei.\n");
+			"and 1 Down Quark) of atomic nuclei.\n",player);
 		list.Add(downQuark1);
 
-		Particle downQuark2 = new Particle("downQuark2", 46.22974, 6.04962, "-1/3e", "4.8 MeV/c^2", 
+		Particle downQuark2 = new Particle("downQuark2", 46.23057, 6.05385, "-1/3e", "4.8 MeV/c^2", 
 			"It is the second lightest of all quarks. Together with the Up Quark, " +
 			"it forms the neutrons (1 Up Quark and 2 Down Quarks) and protons (2 Up Quarks " +
-			"and 1 Down Quark) of atomic nuclei.\n");
+			"and 1 Down Quark) of atomic nuclei.\n",player);
 		list.Add(downQuark2);
 
-		Particle gluon1 = new Particle("gluon", 46.23040, 6.05163, "0e", "0", "They are elementary particles that glue quarks together, " +
+		Particle gluon1 = new Particle("gluon", 46.23008, 6.05289, "0e", "0", "They are elementary particles that glue quarks together, " +
 									  "forming protons and neutrons. The gluons are considered to be bi-colored, carrying " +
-									  "a unit of color and a unit of anti-color\n");
+									  "a unit of color and a unit of anti-color\n",player);
 		list.Add(gluon1);
 
 		//Particle protons = new Particle("proton", , , "+1e", "1.67 x 10^−27 kg", "A proton is a subatomic particle " +

@@ -18,7 +18,7 @@ namespace Assets.Scripts.DataModel
             enable = true;
             message += particle.name;
             //SceneManager.LoadScene("SimpleScene");
-            
+            particle.player.GetComponent<Player>().collectedParticles.Add(particle);
             //Destroy(gameObject);
         }
     
@@ -28,10 +28,13 @@ namespace Assets.Scripts.DataModel
             {
                 GUIStyle style = new GUIStyle();
                 style.fontSize = 100;
+                Texture texture = Resources.Load<Texture>("header");
+
+                GUI.DrawTexture(new Rect(0, 0, Screen.width, 400),texture);
                 GUIStyle desStyle = new GUIStyle();
                 desStyle.fontSize = 30;
                 StartCoroutine(disable());
-                if (GUI.Button(new Rect(0, 600, Screen.width, 200), particle.name + " : mass : " + particle.mass , style))
+                if (GUI.Button(new Rect(0, 600, Screen.width, 400), particle.name + " : mass : " + particle.mass , style))
                 {
 
                 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 [ExecuteInEditMode]
 public class TestLocationService : MonoBehaviour
 {
+    
     public bool isLocationEnabled;
     private bool particleSpawned;
     public Camera maincamera;
@@ -63,6 +64,7 @@ public class TestLocationService : MonoBehaviour
         }
         googleMap = map.GetComponent<GoogleMap>();
         spawner = particleSpawnObject.GetComponent<Spawner>();
+        
         flow = new List<string>();
         initFlowMessages();
 
